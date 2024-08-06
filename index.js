@@ -102,7 +102,7 @@ io.init({
 
 		// Initialize a new pm2 bus to listen for log events.
 		pm2.launchBus(function(error, bus) {
-			// bus.on("log:out", (packet) => routeLog(packet, "info")); // Only show error logs
+			bus.on("log:out", (packet) => routeLog(packet, "info"));
 			bus.on("log:err", (packet) => routeLog(packet, "error"));
 
 			// Cleanup log transport pipelines when a process exits.
